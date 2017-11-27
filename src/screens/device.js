@@ -9,10 +9,16 @@ import {
   TextInput
 } from 'react-native';
 
+import { Actions } from 'react-native-router-flux';
+
 class Device extends Component {
   render() {
     return (
-      <View></View>
+      <View>
+        <Button
+          onPress={() => Actions.replace('aboutUs')}
+          title="Go to About Us"/>
+      </View>
     )
   }
 }

@@ -41,7 +41,7 @@ class AboutUs extends Component {
     return (
       <View>
         <Button
-          onPress={() => Actions.device()}
+          onPress={() => Actions.replace('device')}
           title="Go to Device"/>
       </View>
     );
