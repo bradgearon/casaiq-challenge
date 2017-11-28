@@ -1,28 +1,34 @@
-import React, {Component} from 'react';
-import {Router, Scene, Stack, Drawer} from 'react-native-router-flux';
+import importToArray from 'import-to-array';
 
+import React, {Component} from 'react';
+import {StackNavigator} from 'react-navigation';
+
+import {View, Text} from 'react-native';
 import * as Screens from '../screens'
 
-class Routes extends Component {
+const screens = importToArray(Screens);
+
+const Routes = StackNavigator({
+  AboutUs: {
+    screen: Screens.AboutUs,
+    path: 'about-us'
+  },
+  Device: {
+    screen: Screens.Device,
+    path: 'device/:device_name'
+  }
+});
+
+for(var screen of screens) {
+  screen.defaultProps = {
+    router: Routes.router
+  };
+}
+
+class Router extends Component {
   render() {
-    return (
-      <Router>
-        <Scene key="root">
-          <Scene
-            key="aboutUs"
-            path="about-us"
-            component={Screens.AboutUs}
-            title="About Us"
-            initial/>
-          <Scene
-            key="device"
-            path="device/:device-name"
-            component={Screens.Device}
-            title="Device"/>
-        </Scene>
-      </Router>
-    )
+    return (<Routes/>)
   }
 }
 
-export default Routes;
+export default Router;

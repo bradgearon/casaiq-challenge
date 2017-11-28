@@ -9,8 +9,6 @@ import {
   TextInput
 } from 'react-native';
 
-import { Actions } from 'react-native-router-flux';
-
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\nCmd+D or shake for dev menu',
   android: 'Double tap R on your keyboard to reload,\nShake or press menu button for dev men' +
@@ -37,11 +35,17 @@ const styles = StyleSheet.create({
 });
 
 class AboutUs extends Component {
+  static navigationOptions = {
+    title: 'About Us'
+  };
   render() {
     return (
       <View>
         <Button
-          onPress={() => Actions.replace('device')}
+          onPress={() => {
+            let action = this.props.router.getActionForPathAndParams('device/some-other-device');
+            this.props.navigation.dispatch(action);
+          }}
           title="Go to Device"/>
       </View>
     );
