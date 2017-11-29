@@ -4,6 +4,8 @@ import {Text, View} from 'react-native';
 import {Link} from '../components/Link';
 import {LinkButton} from '../components/LinkButton';
 
+import sceneStyle from '../styles/scene';
+
 class AboutUs extends Component {
   static navigationOptions = {
     title: 'About Us'
@@ -11,7 +13,7 @@ class AboutUs extends Component {
 
   render() {
     return (
-      <View>
+      <View style={sceneStyle.content}>
         <LinkButton
           to="device/some-other-other-device"
           title="Some Other Other Device"/>
