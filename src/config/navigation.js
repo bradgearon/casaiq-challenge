@@ -1,4 +1,4 @@
-import {Animated, Easing} from 'react-native';
+import {StyleSheet, Animated, Easing} from 'react-native';
 import {StackNavigator} from 'react-navigation';
 import Routes from './routes';
 

@@ -11,7 +11,7 @@ class AppRoot extends Component {
   }
 
   render() {
-    return (<Navigation/>)
+    return (<Navigation />)
   }
   getChildContext() {
     return {router: Navigation.router, navigation: this.navigation};
