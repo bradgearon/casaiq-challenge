@@ -9,7 +9,6 @@ import {
   TextInput
 } from 'react-native';
 
-import {NavigationActions} from 'react-navigation';
 import normalizeTitle from '../utils/normalizeTitle';
 
 class Device extends Component {

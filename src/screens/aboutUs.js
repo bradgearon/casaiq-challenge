@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 
 import {Link} from '../components/link';
+import {LinkButton} from '../components/linkButton';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\nCmd+D or shake for dev menu',
@@ -42,24 +43,17 @@ class AboutUs extends Component {
   };
 
   render() {
-    const {dispatch} = this.props.navigation;
-    const {getActionForPathAndParams} = this.props.screenProps.router;
-    
     return (
       <View>
-        <Text>{JSON.stringify(this.props)}</Text>
-        <Link to="device/some-other-device" {...this.props}>
+        <LinkButton
+          to="device/some-other-other-device"
+          title="Some Other Other Device"/>
+        <Link to="device/some-other-device">
           <Text>Some Other Device</Text>
         </Link>
-        <Button
-          onPress={() => {
-            let action = getActionForPathAndParams('device/some-other-device');
-            dispatch(action);
-          }}
-          title="Go to Device"/>
       </View>
     );
   }
 }
 
-export {AboutUs}; 
+export {AboutUs};

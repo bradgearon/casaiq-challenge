@@ -1,12 +1,8 @@
 import React, {Component} from 'react';
-import {TouchableHighlight} from 'react-native';
+import {Button} from 'react-native';
 import PropTypes from 'prop-types';
 
-class Link extends Component {
-  static defaultProps = { 
-    component: TouchableHighlight 
-  };
-  
+class LinkButton extends Component {  
   static contextTypes = {
     router: PropTypes.object,
     navigation: PropTypes.object
@@ -27,10 +23,9 @@ class Link extends Component {
   };
 
   render() {
-    const { component: Component, to, ...rest } = this.props;
-    return <Component {...rest} onPress={this.handlePress}/>
+    const { to, ...rest } = this.props;
+    return <Button {...rest} onPress={this.handlePress}/>
   };
-
 }
 
-export {Link};
+export {LinkButton};
