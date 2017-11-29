@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import AppRoot from './components/appRoot'
+import AppRoot from './components/AppRoot'
 
 class App extends Component {
   render() {

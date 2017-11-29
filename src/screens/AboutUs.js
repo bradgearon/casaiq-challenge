@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Text, View} from 'react-native';
 
-import {Link} from '../components/link';
-import {LinkButton} from '../components/linkButton';
+import {Link} from '../components/Link';
+import {LinkButton} from '../components/LinkButton';
 
 class AboutUs extends Component {
   static navigationOptions = {

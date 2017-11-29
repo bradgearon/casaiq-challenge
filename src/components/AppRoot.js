@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {View} from 'react-native';
 import PropTypes from 'prop-types';
 
-import Navigation from '../config/navigation';
+import Navigation from '../config/Navigation';
 
 class AppRoot extends Component {
   static childContextTypes = {

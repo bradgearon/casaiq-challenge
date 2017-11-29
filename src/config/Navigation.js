@@ -1,6 +1,6 @@
 import {StyleSheet, Animated, Easing} from 'react-native';
 import {StackNavigator} from 'react-navigation';
-import Routes from './routes';
+import Routes from './Routes';
 
 const Navigation = StackNavigator(Routes, {
   transitionConfig: () => ({
