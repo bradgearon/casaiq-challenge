@@ -1,12 +1,7 @@
-import importToArray from 'import-to-array';
-
 import React, {Component} from 'react';
 import {StackNavigator} from 'react-navigation';
-
-import {View, Text} from 'react-native';
 import * as Screens from '../screens'
-
-const screens = importToArray(Screens);
+import PropTypes from 'prop-types';
 
 const Routes = StackNavigator({
   AboutUs: {
@@ -19,16 +14,20 @@ const Routes = StackNavigator({
   }
 });
 
-for(var screen of screens) {
-  screen.defaultProps = {
-    router: Routes.router
-  };
-}
-
 class Router extends Component {
-  render() {
-    return (<Routes/>)
+  static childContextTypes = {
+    router: PropTypes.object.isRequired
   }
+
+  getChildContext() {
+    return {
+      router: Routes.router
+    };
+  }
+  render() {
+    return (<Routes screenProps={{ router: Routes.router }}/>)
+  }
+  
 }
 
 export default Router;

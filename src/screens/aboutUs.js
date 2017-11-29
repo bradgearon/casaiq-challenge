@@ -9,6 +9,8 @@ import {
   TextInput
 } from 'react-native';
 
+import {Link} from '../components/link';
+
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\nCmd+D or shake for dev menu',
   android: 'Double tap R on your keyboard to reload,\nShake or press menu button for dev men' +
@@ -38,13 +40,21 @@ class AboutUs extends Component {
   static navigationOptions = {
     title: 'About Us'
   };
+
   render() {
+    const {dispatch} = this.props.navigation;
+    const {getActionForPathAndParams} = this.props.screenProps.router;
+    
     return (
       <View>
+        <Text>{JSON.stringify(this.props)}</Text>
+        <Link to="device/some-other-device" {...this.props}>
+          <Text>Some Other Device</Text>
+        </Link>
         <Button
           onPress={() => {
-            let action = this.props.router.getActionForPathAndParams('device/some-other-device');
-            this.props.navigation.dispatch(action);
+            let action = getActionForPathAndParams('device/some-other-device');
+            dispatch(action);
           }}
           title="Go to Device"/>
       </View>
@@ -52,4 +62,4 @@ class AboutUs extends Component {
   }
 }
 
-export {AboutUs};
+export {AboutUs}; 
