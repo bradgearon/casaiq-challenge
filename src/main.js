@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import Routes from './config/routes'
+import AppRoot from './components/appRoot'
 
 class App extends Component {
   render() {
-    return (<Routes/>)
+    return (<AppRoot/>)
   }
 }
 
