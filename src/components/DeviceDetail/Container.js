@@ -1,9 +1,12 @@
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import { updateDevice } from '../../actions';
 import DeviceDetail from './Component';
 
-const mapStateToProps = state => ({ devices: state.devices });
+const mapStateToProps = state => ({
+  devices: state.devices,
+});
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
   const props = Object.assign({}, ownProps, stateProps, dispatchProps);
@@ -21,4 +24,8 @@ const mapDispatchToProps = dispatch => {
 };
 */
 
-export default connect(mapStateToProps, null, mergeProps)(DeviceDetail);
+export default connect(
+  mapStateToProps,
+  dispatch => bindActionCreators({ updateDevice }, dispatch),
+  mergeProps,
+)(DeviceDetail);

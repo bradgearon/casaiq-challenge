@@ -2,8 +2,8 @@ export const DeviceTypes = {
   UPDATE_DEVICE: 'UPDATE_DEVICE',
 };
 
-export const updateDevice = (id, state) => ({
+export const updateDevice = (device, isLocked) => ({
   type: DeviceTypes.UPDATE_DEVICE,
-  id,
-  state,
+  device_name: device.device_name,
+  state: isLocked ? 'locked' : 'unlocked',
 });

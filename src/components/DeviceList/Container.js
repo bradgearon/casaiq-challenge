@@ -1,6 +1,5 @@
 import { connect } from 'react-redux';
 
-import { updateDevice } from '../../actions';
 import DeviceList from './Component';
 
 const mapStateToProps = state => ({ devices: state.devices });
