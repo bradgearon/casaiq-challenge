@@ -5,7 +5,7 @@ const devices = (state = [], action) => {
     case DeviceTypes.UPDATE_DEVICE:
       return state.map(device =>
         (device.id === action.id) 
-          ? {...device, state: !device.state}
+          ? {...device, state: action.state}
           : device
       );
     default:

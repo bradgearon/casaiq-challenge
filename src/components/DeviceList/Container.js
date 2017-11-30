@@ -1,4 +1,5 @@
 import {connect} from 'react-redux';
+
 import {updateDevice} from '../../actions';
 import DeviceList from './Component';
 

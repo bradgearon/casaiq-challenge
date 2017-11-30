@@ -4,6 +4,7 @@ import {Text, View, Button} from 'react-native';
 import normalizeTitle from '../utils/normalizeTitle';
 
 import sceneStyle from '../styles/scene';
+import DeviceDetail from '../components/DeviceDetail';
 
 class Device extends Component {
   static navigationOptions = ({navigation}) => ({
@@ -13,8 +14,7 @@ class Device extends Component {
     const {goBack, state} = this.props.navigation;
     return (
       <View style={sceneStyle.content}>
-        <Text>Name: {state.params.device_name}</Text>
-        <Button onPress={() => goBack()} title="Go to About Us"/>
+        <DeviceDetail device={state.params.device_name} />
       </View>
     )
   }
