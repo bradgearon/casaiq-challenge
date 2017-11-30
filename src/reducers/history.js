@@ -1,6 +1,8 @@
+import {HistoryTypes} from '../actions/history';
+
 const history = (state = [], action) => {
   switch (action.type) {
-    case 'ADD_HISTORY':
+    case HistoryTypes.ADD_HISTORY:
       return [
         ...state,
         {
