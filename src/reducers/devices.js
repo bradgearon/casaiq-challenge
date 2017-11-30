@@ -1,0 +1,14 @@
+const devices = (state = [], action) => {
+  switch (action.type) {
+    case 'UPDATE_DEVICE':
+      return state.map(device =>
+        (device.id === action.id) 
+          ? {...device, state: !device.state}
+          : device
+      );
+    default:
+      return state;
+  }
+};
+
+export default devices;
