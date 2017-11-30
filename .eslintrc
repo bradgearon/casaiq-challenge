@@ -1,13 +1,16 @@
 {
-	"parser": "babel-eslint",
-	"extends": "airbnb",
-	"plugins": [
-		"react",
-		// "jsx-ally",
-		"import"
-	],
-	"rules": {
-		"linebreak-style": 0,
-		"react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]		
-	}
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "plugins": [
+    "react",
+    // "jsx-ally",
+    "import"
+  ],
+  "rules": {
+    "no-plusplus": "off",
+    "linebreak-style": 0,
+    "react/jsx-filename-extension": [1, {
+      "extensions": [".js", ".jsx"]
+    }]
+  }
 }
