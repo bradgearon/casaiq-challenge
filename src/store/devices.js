@@ -4,15 +4,15 @@ const devices = {
       id: 1,
       device_name: 'some-1422-lock',
       type: 'lock',
-      state: 'locked'
+      state: 'locked',
     }, {
       id: 2,
       device_name: 'some-1233-thermostat',
       type: 'thermostat',
-      state: '75'
-    }
+      state: '75',
+    },
   ],
-  history: []
+  history: [],
 };
 
 export default devices;

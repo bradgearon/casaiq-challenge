@@ -3,11 +3,9 @@ export const HistoryTypes = {
 };
 
 let nextHistoryId = 0;
-export const addHistory = state => {
-  return {
-    type: HistoryTypes.ADD_HISTORY,
-    id: nextHistoryId++,
-    timestamp: Date.now(),
-    state
-  }
-};
+export const addHistory = state => ({
+  type: HistoryTypes.ADD_HISTORY,
+  id: nextHistoryId++,
+  timestamp: Date.now(),
+  state,
+});

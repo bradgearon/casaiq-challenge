@@ -1,11 +1,9 @@
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
-import {updateDevice} from '../../actions';
+import { updateDevice } from '../../actions';
 import DeviceList from './Component';
 
-const mapStateToProps = state => {
-  return {devices: state.devices};
-};
+const mapStateToProps = state => ({ devices: state.devices });
 
 /*
 const mapDispatchToProps = dispatch => {

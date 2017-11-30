@@ -1,2 +1,2 @@
-export * from "./AboutUs";
-export * from "./Device";
+export * from './AboutUs';
+export * from './Device';

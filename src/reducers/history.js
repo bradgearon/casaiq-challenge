@@ -1,4 +1,4 @@
-import {HistoryTypes} from '../actions/history';
+import { HistoryTypes } from '../actions/history';
 
 const history = (state = [], action) => {
   switch (action.type) {
@@ -8,8 +8,8 @@ const history = (state = [], action) => {
         {
           id: action.id,
           text: action.state,
-          timestamp: action.timestamp
-        }
+          timestamp: action.timestamp,
+        },
       ];
     default:
       return state;

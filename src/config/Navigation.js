@@ -1,5 +1,5 @@
-import {StyleSheet, Animated, Easing} from 'react-native';
-import {StackNavigator} from 'react-navigation';
+import { Animated, Easing } from 'react-native';
+import { StackNavigator } from 'react-navigation';
 import Routes from './Routes';
 
 const Navigation = StackNavigator(Routes, {
@@ -9,7 +9,7 @@ const Navigation = StackNavigator(Routes, {
       easing: Easing.out(Easing.poly(4)),
       timing: Animated.timing,
     },
-    screenInterpolator: sceneProps => {
+    screenInterpolator: (sceneProps) => {
       const { layout, position, scene } = sceneProps;
       const { index } = scene;
 

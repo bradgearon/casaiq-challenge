@@ -1,10 +1,6 @@
-import React, {Component} from 'react';
-import AppRoot from './components/AppRoot'
+import React from 'react';
+import AppRoot from './components/AppRoot';
 
-class App extends Component {
-  render() {
-    return (<AppRoot/>)
-  }
-}
+const App = () => (<AppRoot />);
 
 export default App;
