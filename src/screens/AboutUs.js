@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Text, View} from 'react-native';
 
 import sceneStyle from '../styles/scene';
-import DeviceList from '../containers/DeviceList';
+import DeviceList from '../components/DeviceList';
 
 class AboutUs extends Component {
   static navigationOptions = {
