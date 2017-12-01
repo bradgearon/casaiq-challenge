@@ -4,8 +4,6 @@ import {
   View,
   Image,
   TouchableWithoutFeedback,
-  TouchableNativeFeedback,
-  TouchableHighlight,
 } from 'react-native';
 
 class Lock extends Component {
@@ -29,12 +27,7 @@ class Lock extends Component {
 
     return (
       <TouchableWithoutFeedback onPress={toggleLock}>
-        <View
-          style={{
-            paddingHorizontal: 25,
-            borderRadius: 5,
-          }}
-        >
+        <View>
           <Animated.Image
             style={{ top: lockTopY }}
             source={require('../assets/lock-top.png')}

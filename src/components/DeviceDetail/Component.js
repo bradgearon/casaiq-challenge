@@ -5,12 +5,12 @@ import PropTypes from 'prop-types';
 import DeviceControl from '../DeviceControl';
 
 const DeviceDetail = ({ device, updateDevice }) => (
-  <View style={{ alignItems: 'center', marginTop: 20 }}>
+  <View>
     <DeviceControl
       device={device}
       updateDevice={updateDevice}
     />
-    <Text style={{ fontSize: 24 }}>{device.state}</Text>
+    <Text>{device.state}</Text>
   </View>
 );
 
