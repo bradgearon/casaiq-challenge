@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 
 import DeviceControl from '../DeviceControl';
+import SlidingPanel from '../SlidingPanel';
 
 const DeviceDetail = ({ device, updateDevice, addHistory }) => (
   <View>
@@ -12,7 +13,15 @@ const DeviceDetail = ({ device, updateDevice, addHistory }) => (
       addHistory={addHistory}
     />
     <Text>{device.state}</Text>
-    <Text>{JSON.stringify(device.history)}</Text>
+    <SlidingPanel
+      title="History"
+      height={200}
+    >
+      <Text style={{ fontSize: 20 }}>Some history</Text>
+      <Text style={{ fontSize: 20 }}>Some history</Text>
+      <Text style={{ fontSize: 20 }}>Some history</Text>
+      <Text style={{ fontSize: 20 }}>Some history</Text>
+    </SlidingPanel>
   </View>
 );
 
