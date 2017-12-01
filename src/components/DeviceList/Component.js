@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
 
-import { LinkButton } from '../LinkButton';
+import LinkButton from '../LinkButton';
 import normalizeTitle from '../../utils/normalizeTitle';
 
 const DeviceList = ({ devices }) => (

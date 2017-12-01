@@ -28,4 +28,4 @@ class LinkButton extends Component {
   }
 }
 
-export { LinkButton };
+export default LinkButton;

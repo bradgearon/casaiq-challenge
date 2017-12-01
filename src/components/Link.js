@@ -32,4 +32,4 @@ class Link extends Component {
   }
 }
 
-export { Link };
+export default Link;
