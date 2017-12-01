@@ -6,8 +6,10 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 
-const lockTop = require('../../assets/lock-top.png');
-const lockBottom = require('../../assets/lock-bottom.png');
+const lockImage = {
+  top: require('../../assets/lock-top.png'),
+  bottom: require('../../assets/lock-bottom.png'),
+};
 
 class Lock extends Component {
   shouldComponentUpdate() {
@@ -34,11 +36,11 @@ class Lock extends Component {
         <View>
           <Animated.Image
             style={{ top: lockTopY }}
-            source={lockTop}
+            source={lockImage.top}
           />
           <Image
             style={{ top: -58 }}
-            source={lockBottom}
+            source={lockImage.bottom}
           />
         </View>
       </TouchableWithoutFeedback>
