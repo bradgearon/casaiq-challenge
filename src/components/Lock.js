@@ -13,7 +13,7 @@ class Lock extends Component {
   render() {
     const topMin = 10;
     const topMax = 50;
-    const { device, updateDevice } = this.props;
+    const { device, updateDevice, addHistory } = this.props;
 
     let isLocked = device.state === 'locked';
     const lockTopY = new Animated.Value(isLocked ? topMax : topMin);
@@ -23,6 +23,7 @@ class Lock extends Component {
       Animated.spring(lockTopY, { toValue }).start();
       isLocked = !isLocked;
       updateDevice(device, isLocked);
+      addHistory(device);
     };
 
     return (
@@ -33,9 +34,7 @@ class Lock extends Component {
             source={require('../assets/lock-top.png')}
           />
           <Image
-            style={{
-              top: -58,
-            }}
+            style={{ top: -58 }}
             source={require('../assets/lock-bottom.png')}
           />
         </View>

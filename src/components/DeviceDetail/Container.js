@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { updateDevice } from '../../actions';
+import { updateDevice, addHistory } from '../../actions';
+
 import DeviceDetail from './Component';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -10,5 +11,5 @@ const mapStateToProps = (state, ownProps) => ({
 
 export default connect(
   mapStateToProps,
-  dispatch => bindActionCreators({ updateDevice }, dispatch),
+  dispatch => bindActionCreators({ updateDevice, addHistory }, dispatch),
 )(DeviceDetail);

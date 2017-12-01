@@ -4,13 +4,15 @@ import PropTypes from 'prop-types';
 
 import DeviceControl from '../DeviceControl';
 
-const DeviceDetail = ({ device, updateDevice }) => (
+const DeviceDetail = ({ device, updateDevice, addHistory }) => (
   <View>
     <DeviceControl
       device={device}
       updateDevice={updateDevice}
+      addHistory={addHistory}
     />
     <Text>{device.state}</Text>
+    <Text>{JSON.stringify(device.history)}</Text>
   </View>
 );
 
