@@ -8,11 +8,15 @@ import normalizeTitle from '../../utils/normalizeTitle';
 const DeviceList = ({ devices }) => (
   <View>
     {devices.map(device => (
-      <LinkButton
+      <View
         key={device.device_name}
-        title={normalizeTitle(device.device_name)}
-        to={`device/${device.device_name}`}
-      />
+        style={{ margin: 5 }}
+      >
+        <LinkButton
+          title={normalizeTitle(device.device_name)}
+          to={`device/${device.device_name}`}
+        />
+      </View>
     ))}
   </View>
 );
