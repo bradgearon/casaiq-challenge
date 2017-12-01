@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 
-const UnkownDevice = ({ device, updateDevice }) => (
+const UnkownDevice = ({ device }) => (
   <View>
     <Text>This device is {device.device_name}</Text>
     <Text>We are not supporting this device at the moment</Text>

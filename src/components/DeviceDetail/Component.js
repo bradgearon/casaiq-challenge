@@ -1,32 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 
-import UnknownDevice from '../UnknownDevice';
-import Lock from '../Lock';
-
-const DeviceTypes = {
-  lock: Lock,
-  unknown: UnknownDevice,
-};
-
-const DeviceControl = ({ device, ...rest }) => {
-  let deviceControl = DeviceTypes.unknown;
-  const foundDeviceControl = DeviceTypes[device.type];
-  if (foundDeviceControl !== undefined) {
-    deviceControl = foundDeviceControl;
-  }
-  return deviceControl({ device, ...rest });
-};
+import DeviceControl from '../DeviceControl';
 
 const DeviceDetail = ({ device, updateDevice }) => (
-  <View>
-    <Text>{device.device_name}</Text>
-    <Text>{device.type}</Text>
+  <View style={{ alignItems: 'center', marginTop: 20 }}>
     <DeviceControl
       device={device}
       updateDevice={updateDevice}
     />
+    <Text style={{ fontSize: 24 }}>{device.state}</Text>
   </View>
 );
 
