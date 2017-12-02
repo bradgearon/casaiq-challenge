@@ -4,6 +4,7 @@ const addHistoryElement = (device, action) => {
   device.history.push({
     timestamp: action.timestamp,
     state: device.state,
+    id: action.id,
   });
   return device.history;
 };

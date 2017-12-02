@@ -12,6 +12,7 @@ class SlidingPanel extends Component {
     super(props);
 
     this.iconImage = require('../assets/ic_arrow_drop_down_circle_white_48dp.png');
+
     this.onExpand = this.onExpand.bind(this);
     this.setMainHeight = this.setMainHeight.bind(this);
     this.setTitleHeight = this.setTitleHeight.bind(this);
@@ -66,33 +67,43 @@ class SlidingPanel extends Component {
           height: this.state.height,
         }}
       >
-        <View>
+        <View >
           <TouchableHighlight
             onPress={this.onExpand}
             onLayout={this.setMainHeight}
+            style={{
+              elevation: 1.5,
+            }}
           >
-            <View style={{ flexDirection: 'row', padding: 10 }}>
+            <View style={{
+
+                flexDirection: 'row',
+                padding: 10,
+                backgroundColor: 'white',
+              }}
+            >
               <Text
                 onLayout={this.setTitleHeight}
                 style={{
-                flex: 1,
-                fontSize: 20,
-              }}
+                  flex: 1,
+                  fontSize: 20,
+                }}
               >
                 {this.state.title}
               </Text>
               <Animated.Image
                 style={{
-                transform: [{ rotate: rotation }],
-                height: this.state.titleHeight,
-                width: this.state.titleHeight,
-              }}
+                  transform: [{ rotate: rotation }],
+                  height: this.state.titleHeight,
+                  width: this.state.titleHeight,
+                }}
+                tintColor="lightgrey"
                 source={this.iconImage}
               />
             </View>
           </TouchableHighlight>
-          <ScrollView style={{ height: this.state.expandHeight }}>
-            <View style={{ paddingBottom: 10, paddingHorizontal: 10 }}>
+          <ScrollView style={{ backgroundColor: 'white', height: this.state.expandHeight }}>
+            <View style={{ padding: 10 }}>
               {this.props.children}
             </View>
           </ScrollView>

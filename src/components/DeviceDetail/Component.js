@@ -7,23 +7,24 @@ import DeviceControl from '../DeviceControl';
 import SlidingPanel from '../SlidingPanel';
 
 const DeviceDetail = ({ device, updateDevice, addHistory }) => (
-  <View style={{ flex: 1 }}>
-    <View style={{ flex: 1 }}>
+  <View style={{ flex: 1, zIndex: 0 }}>
+    <View style={{ flex: 1, zIndex: 0 }}>
       <DeviceControl
+        style={{ width: '90%', alignItems: 'center' }}
         device={device}
         updateDevice={updateDevice}
         addHistory={addHistory}
       />
-      <Text>{device.state}</Text>
     </View>
     <SlidingPanel
       title="History"
       expandHeight={200}
+      style={{ zIndex: 2 }}
     >
       {device.history
         .sort((left, right) => right.timestamp - left.timestamp)
         .map(history => (
-          <View>
+          <View key={history.id}>
             <Text>{moment(history.timestamp).format('YYYY-MM-DD hh:mm:ss')} {history.state}</Text>
           </View>
       ))}

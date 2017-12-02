@@ -111,3 +111,4 @@ node_modules
 
 /coverage
 /third-party
+.vscode/settings.json
