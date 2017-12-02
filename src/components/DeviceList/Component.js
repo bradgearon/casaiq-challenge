@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import LinkButton from '../LinkButton';
 import normalizeTitle from '../../utils/normalizeTitle';
 
-const DeviceList = ({ devices }) => (
-  <View>
+const DeviceList = ({ devices, style }) => (
+  <View style={style}>
     {devices.map(device => (
       <View
         key={device.device_name}

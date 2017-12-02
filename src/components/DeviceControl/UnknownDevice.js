@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 
 const UnkownDevice = ({ device, style }) => (
-  <View style={style}>
-    <Text>This device is {device.device_name}</Text>
-    <Text>We are not supporting this device at the moment</Text>
+  <View style={[{ margin: 20 }, style]}>
+    <Text style={{ fontSize: 18 }}>We are not supporting this device at the moment</Text>
   </View>
 );
 

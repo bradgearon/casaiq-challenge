@@ -9,13 +9,12 @@ import LockImage from './LockImage';
 const Lock = ({
   device, updateDevice, addHistory, style,
 }) => (
-  <View style={style}>
+  <View style={[{ marginTop: 10 }, style]}>
     <LockImage
       style={{
         elevation: 2,
         borderRadius: 5,
-        padding: 10,
-        height: 200,
+        height: 300,
       }}
       onValueChanged={(value) => {
         updateDevice(device, value);
@@ -23,7 +22,9 @@ const Lock = ({
       }}
       value={device.state === 'locked'}
     />
-    <Text>{device.state}</Text>
+    <View style={{ margin: 10 }}>
+      <Text style={{ fontSize: 18 }}>{device.state}</Text>
+    </View>
   </View>
 );
 
