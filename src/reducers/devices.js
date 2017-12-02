@@ -1,12 +1,12 @@
 import { DeviceTypes } from '../actions/device';
 
 const addHistoryElement = (device, action) => {
-  device.history.push({
+  device.history.unshift({
     timestamp: action.timestamp,
     state: device.state,
     id: action.id,
   });
-  return device.history;
+  return device.history.slice(0, 10);
 };
 
 const devices = (state = [], action) => {
