@@ -6,21 +6,39 @@ import DeviceControl from '../DeviceControl';
 import SlidingPanel from '../SlidingPanel';
 
 const DeviceDetail = ({ device, updateDevice, addHistory }) => (
-  <View>
-    <DeviceControl
-      device={device}
-      updateDevice={updateDevice}
-      addHistory={addHistory}
-    />
-    <Text>{device.state}</Text>
+  <View style={{ flex: 1 }}>
+    <View style={{ flex: 1 }}>
+      <DeviceControl
+        device={device}
+        updateDevice={updateDevice}
+        addHistory={addHistory}
+      />
+      <Text>{device.state}</Text>
+    </View>
     <SlidingPanel
       title="History"
-      height={200}
+      expandHeight={200}
     >
       <Text style={{ fontSize: 20 }}>Some history</Text>
       <Text style={{ fontSize: 20 }}>Some history</Text>
       <Text style={{ fontSize: 20 }}>Some history</Text>
       <Text style={{ fontSize: 20 }}>Some history</Text>
+      <Text style={{ fontSize: 20 }}>Some history</Text>
+      <Text style={{ fontSize: 20 }}>Some history</Text>
+      <Text style={{ fontSize: 20 }}>Some history</Text>
+      <Text style={{ fontSize: 20 }}>Some history</Text>
+      <Text style={{ fontSize: 20 }}>Some history</Text>
+      <Text style={{ fontSize: 20 }}>Some history</Text>
+      <Text style={{ fontSize: 20 }}>Some history</Text>
+      <Text style={{ fontSize: 20 }}>Some history</Text>
+      <Text style={{ fontSize: 20 }}>Some history</Text>
+      <Text style={{ fontSize: 20 }}>Some history</Text>
+      <Text style={{ fontSize: 20 }}>Some history</Text>
+      <Text style={{ fontSize: 20 }}>Some history</Text>
+      <Text style={{ fontSize: 20 }}>Some history</Text>
+      <Text style={{ fontSize: 20 }}>Some history</Text>
+      <Text style={{ fontSize: 20 }}>Some history</Text>
+      <Text style={{ fontSize: 20 }}>Last history</Text>
     </SlidingPanel>
   </View>
 );

@@ -1,93 +1,103 @@
 import React, { Component } from 'react';
 import {
-  StyleSheet,
   Text,
   View,
-  Image,
   TouchableHighlight,
+  Animated,
+  ScrollView,
 } from 'react-native';
-
-import * as Animatable from 'react-native-animatable';
-
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fff',
-    margin: 10,
-    overflow: 'hidden',
-  },
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  title: {
-    flex: 1,
-    padding: 10,
-    fontSize: 22,
-    color: '#2a2f43',
-    fontWeight: 'bold',
-  },
-  button: {
-    padding: 10,
-  },
-  buttonImage: {
-    width: 50,
-    height: 50,
-  },
-  body: {
-    padding: 10,
-    paddingTop: 0,
-  },
-});
 
 class SlidingPanel extends Component {
   constructor(props) {
     super(props);
 
     this.iconImage = require('../assets/ic_arrow_drop_down_circle_white_48dp.png');
+    this.onExpand = this.onExpand.bind(this);
+    this.setMainHeight = this.setMainHeight.bind(this);
+    this.setTitleHeight = this.setTitleHeight.bind(this);
 
     this.state = {
+      expandHeight: this.props.expandHeight,
+      containerTop: new Animated.Value(0),
+      iconRotation: new Animated.Value(0),
       title: this.props.title,
       expanded: false,
     };
   }
 
+  onExpand() {
+    this.state.expanded = !this.state.expanded;
+    const top = this.state.expanded ? -this.props.expandHeight : 0;
+    const rotation = this.state.expanded ? 1 : 0;
+
+    Animated.parallel([
+      Animated.spring(this.state.iconRotation, {
+        toValue: rotation,
+      }),
+      Animated.spring(this.state.containerTop, {
+        toValue: top,
+      }),
+    ]).start();
+  }
+
+  setMainHeight(event) {
+    const { height } = event.nativeEvent.layout;
+    this.setState(() => ({
+      height,
+    }));
+  }
+
+  setTitleHeight(event) {
+    const { height } = event.nativeEvent.layout;
+    this.setState(() => ({
+      titleHeight: height,
+    }));
+  }
+
   render() {
+    const rotation = this.state.iconRotation.interpolate({
+      inputRange: [0, 1],
+      outputRange: ['0deg', '180deg'],
+    });
     return (
-      <Animatable.View
-        ref={(c) => { this.container = c; }}
-        style={[styles.container, { top: 0 }]}
+      <Animated.View
+        style={{
+          top: this.state.containerTop,
+          height: this.state.height,
+        }}
       >
-        <TouchableHighlight
-          style={styles.button}
-          onPress={() => {
-            this.state.expanded = !this.state.expanded;
-
-            this.container.transitionTo({
-              top: this.state.expanded ? -this.props.height : 0,
-            });
-            this.icon.transitionTo({
-              transform: [{
-                rotate: this.state.expanded ? '180deg' : '0deg',
-              }],
-            });
-          }}
-          underlayColor="#f1f1f1"
-        >
-          <View style={styles.titleContainer}>
-            <Text style={styles.title}>{this.state.title}</Text>
-            <Animatable.Image
-              style={styles.buttonImage}
-              source={this.iconImage}
-              ref={(c) => { this.icon = c; }}
-            />
-          </View>
-        </TouchableHighlight>
-        <View style={styles.body} onLayout={this.setMaxHeight}>
-          {this.props.children}
+        <View>
+          <TouchableHighlight
+            onPress={this.onExpand}
+            onLayout={this.setMainHeight}
+          >
+            <View style={{ flexDirection: 'row', padding: 10 }}>
+              <Text
+                onLayout={this.setTitleHeight}
+                style={{
+                flex: 1,
+                fontSize: 20,
+              }}
+              >
+                {this.state.title}
+              </Text>
+              <Animated.Image
+                style={{
+                transform: [{ rotate: rotation }],
+                height: this.state.titleHeight,
+                width: this.state.titleHeight,
+              }}
+                source={this.iconImage}
+              />
+            </View>
+          </TouchableHighlight>
+          <ScrollView style={{ height: this.state.expandHeight }}>
+            <View style={{ paddingBottom: 10, paddingHorizontal: 10 }}>
+              {this.props.children}
+            </View>
+          </ScrollView>
         </View>
-
-      </Animatable.View>
+      </Animated.View>
     );
   }
 }
