@@ -3,7 +3,7 @@ import { DeviceTypes } from '../actions/device';
 const addHistoryElement = (device, action) => {
   device.history.push({
     timestamp: action.timestamp,
-    state: action.state,
+    state: device.state,
   });
   return device.history;
 };

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 
 import DeviceControl from '../DeviceControl';
 import SlidingPanel from '../SlidingPanel';
@@ -19,26 +20,13 @@ const DeviceDetail = ({ device, updateDevice, addHistory }) => (
       title="History"
       expandHeight={200}
     >
-      <Text style={{ fontSize: 20 }}>Some history</Text>
-      <Text style={{ fontSize: 20 }}>Some history</Text>
-      <Text style={{ fontSize: 20 }}>Some history</Text>
-      <Text style={{ fontSize: 20 }}>Some history</Text>
-      <Text style={{ fontSize: 20 }}>Some history</Text>
-      <Text style={{ fontSize: 20 }}>Some history</Text>
-      <Text style={{ fontSize: 20 }}>Some history</Text>
-      <Text style={{ fontSize: 20 }}>Some history</Text>
-      <Text style={{ fontSize: 20 }}>Some history</Text>
-      <Text style={{ fontSize: 20 }}>Some history</Text>
-      <Text style={{ fontSize: 20 }}>Some history</Text>
-      <Text style={{ fontSize: 20 }}>Some history</Text>
-      <Text style={{ fontSize: 20 }}>Some history</Text>
-      <Text style={{ fontSize: 20 }}>Some history</Text>
-      <Text style={{ fontSize: 20 }}>Some history</Text>
-      <Text style={{ fontSize: 20 }}>Some history</Text>
-      <Text style={{ fontSize: 20 }}>Some history</Text>
-      <Text style={{ fontSize: 20 }}>Some history</Text>
-      <Text style={{ fontSize: 20 }}>Some history</Text>
-      <Text style={{ fontSize: 20 }}>Last history</Text>
+      {device.history
+        .sort((left, right) => right.timestamp - left.timestamp)
+        .map(history => (
+          <View>
+            <Text>{moment(history.timestamp).format('YYYY-MM-DD hh:mm:ss')} {history.state}</Text>
+          </View>
+      ))}
     </SlidingPanel>
   </View>
 );

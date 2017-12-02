@@ -13,5 +13,4 @@ export const addHistory = device => ({
   type: DeviceTypes.ADD_DEVICE_HISTORY,
   device_name: device.device_name,
   timestamp: Date.now(),
-  state: device.state,
 });

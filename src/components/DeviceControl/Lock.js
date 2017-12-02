@@ -27,7 +27,7 @@ class Lock extends Component {
       const toValue = isLocked ? topMin : topMax;
       Animated.spring(lockTopY, { toValue }).start();
       isLocked = !isLocked;
-      updateDevice(device, isLocked);
+      updateDevice(device, isLocked);      
       addHistory(device);
     };
 
