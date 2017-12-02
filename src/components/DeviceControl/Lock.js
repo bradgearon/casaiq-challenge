@@ -1,51 +1,30 @@
 import React, { Component } from 'react';
 import {
-  Animated,
   View,
-  Image,
-  TouchableWithoutFeedback,
+  Text,
 } from 'react-native';
 
-const lockImage = {
-  top: require('../../assets/lock-top.png'),
-  bottom: require('../../assets/lock-bottom.png'),
-};
+import LockImage from './LockImage';
 
-class Lock extends Component {
-  shouldComponentUpdate() {
-    return false;
-  }
-  render() {
-    const topMin = 10;
-    const topMax = 50;
-    const { device, updateDevice, addHistory } = this.props;
-
-    let isLocked = device.state === 'locked';
-    const lockTopY = new Animated.Value(isLocked ? topMax : topMin);
-
-    const toggleLock = () => {
-      const toValue = isLocked ? topMin : topMax;
-      Animated.spring(lockTopY, { toValue }).start();
-      isLocked = !isLocked;
-      updateDevice(device, isLocked);      
-      addHistory(device);
-    };
-
-    return (
-      <TouchableWithoutFeedback onPress={toggleLock}>
-        <View>
-          <Animated.Image
-            style={{ top: lockTopY }}
-            source={lockImage.top}
-          />
-          <Image
-            style={{ top: -58 }}
-            source={lockImage.bottom}
-          />
-        </View>
-      </TouchableWithoutFeedback>
-    );
-  }
-}
+const Lock = ({
+  device, updateDevice, addHistory, style,
+}) => (
+  <View style={style}>
+    <LockImage
+      style={{
+        elevation: 2,
+        borderRadius: 5,
+        padding: 10,
+        height: 200,
+      }}
+      onValueChanged={(value) => {
+        updateDevice(device, value);
+        addHistory(device);
+      }}
+      value={device.state === 'locked'}
+    />
+    <Text>{device.state}</Text>
+  </View>
+);
 
 export default Lock;
