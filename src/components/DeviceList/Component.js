@@ -5,13 +5,12 @@ import PropTypes from 'prop-types';
 import LinkButton from '../LinkButton';
 import normalizeTitle from '../../utils/normalizeTitle';
 
+import containerStyles from '../../styles/containers';
+
 const DeviceList = ({ devices, style }) => (
   <View style={style}>
     {devices.map(device => (
-      <View
-        key={device.device_name}
-        style={{ margin: 5 }}
-      >
+      <View key={device.device_name} style={containerStyles.ms}>
         <LinkButton
           title={normalizeTitle(device.device_name)}
           to={`device/${device.device_name}`}

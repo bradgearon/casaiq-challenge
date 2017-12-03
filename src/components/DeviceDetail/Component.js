@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
 import DeviceControl from '../DeviceControl';
 import SlidingPanel from '../SlidingPanel';
+
+import { Text } from '../common';
 
 const dateFormat = 'YYYY-MM-DD h:mm:ss A';
 
@@ -26,7 +28,7 @@ const DeviceDetail = ({ device, updateDevice, addHistory }) => (
       {device.history
         .map(history => (
           <View key={history.id}>
-            <Text style={{ fontSize: 16 }}>
+            <Text>
               {moment(history.timestamp).format(dateFormat)}: {history.state}
             </Text>
           </View>

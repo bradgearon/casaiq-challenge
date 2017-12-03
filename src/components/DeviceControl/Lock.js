@@ -1,18 +1,22 @@
-import React, { Component, PureComponent } from 'react';
+import React, { Component } from 'react';
 import {
   View,
-  Text,
   Dimensions,
 } from 'react-native';
 
+import { Text } from '../common';
+
 import LockImage from './LockImage';
+
+import containerStyles from '../../styles/containers';
+import { COLOR_ACCENT, COLOR_ICON, COLOR_TEXT_PRIMARY, COLOR_PRIMARY, COLOR_SECONDARY } from '../../styles/common';
 
 const getLandscape = () => {
   const dim = Dimensions.get('window');
   return dim.width > dim.height;
 };
 
-class Lock extends PureComponent {
+class Lock extends Component {
   constructor() {
     super();
     this.state = {
@@ -40,9 +44,13 @@ class Lock extends PureComponent {
         }}
         >
           <LockImage
-            style={{
-              padding: 10, elevation: 2, borderRadius: 5, backgroundColor: '#ECEFF1',
-            }}
+            tintColor={COLOR_SECONDARY}
+            style={[
+              containerStyles.es,
+              containerStyles.ps,
+              containerStyles.brs,
+              { backgroundColor: COLOR_ACCENT },
+            ]}
             onValueChanged={(value) => {
               this.props.updateDevice(this.props.device, value);
               this.props.addHistory(this.props.device);
@@ -55,7 +63,7 @@ class Lock extends PureComponent {
           flex: this.state.landscape ? 0.5 : undefined,
         }}
         >
-          <Text style={{ fontSize: 18 }}>{this.props.device.state}</Text>
+          <Text>{this.props.device.state}</Text>
         </View>
       </View>
 

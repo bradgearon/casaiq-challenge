@@ -46,7 +46,7 @@ class LockImage extends Component {
       >
         <View>
           <Animated.Image
-            tintColor="#2196F3"
+            tintColor={this.props.tintColor}
             onLayout={(event) => {
               topHeight = event.nativeEvent.layout.height;
               topMin = topHeight * topMinPercent;
@@ -64,7 +64,7 @@ class LockImage extends Component {
             source={lockImage.top}
           />
           <Image
-            tintColor="#2196F3"
+            tintColor={this.props.tintColor}
             resizeMode="contain"
             style={{
               flex: 0.5,

@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+import { Text } from '../components/common';
 
 import sceneStyle from '../styles/scene';
 import DeviceList from '../components/DeviceList';
+import containerStyles from '../styles/containers';
 
 class AboutUs extends Component {
   static navigationOptions = {
@@ -12,18 +14,11 @@ class AboutUs extends Component {
   render() {
     return (
       <View style={sceneStyle.content}>
-        <Text style={{
-          fontSize: 18,
-          marginTop: 20,
-          marginLeft: 20,
-          marginRight: 20,
-          marginBottom: 10,
-        }}
-        >
+        <Text style={[containerStyles.mm, { marginBottom: 0 }]}>
           CasaIQ - A Smart Home Solution Custom-built for
           Apartments, Condos, and Multifamily Real Estate.
         </Text>
-        <DeviceList style={{ margin: 10 }} />
+        <DeviceList style={containerStyles.ms} />
       </View>
     );
   }

@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
 import {
-  Text,
   View,
-  TouchableHighlight,
   Animated,
   ScrollView,
 } from 'react-native';
 
 import Touchable from 'react-native-platform-touchable';
+import { Text } from './common';
 
+import styles from '../styles/type';
+import containerStyles from '../styles/containers';
+import { COLOR_ACCENT } from '../styles/common';
 
 class SlidingPanel extends Component {
   constructor(props) {
     super(props);
 
-    this.iconImage = require('../assets/ic_arrow_drop_down_circle_white_48dp.png');
+    this.iconImage = require('../assets/drop_down.png');
 
     this.onExpand = this.onExpand.bind(this);
     this.setMainHeight = this.setMainHeight.bind(this);
@@ -77,22 +79,15 @@ class SlidingPanel extends Component {
             onPress={this.onExpand}
             onLayout={this.setMainHeight}
             background={Touchable.SelectableBackground()}
-            style={{
-              elevation: 1.5,
-              backgroundColor: 'white',
-            }}
+            style={[containerStyles.es, containerStyles.default]}
           >
-            <View style={{
+            <View style={[containerStyles.ps, {
                 flexDirection: 'row',
-                padding: 10,
-              }}
+              }]}
             >
               <Text
                 onLayout={this.setTitleHeight}
-                style={{
-                  flex: 1,
-                  fontSize: 20,
-                }}
+                style={[{ flex: 1 }, styles.h4]}
               >
                 {this.state.title}
               </Text>
@@ -102,17 +97,16 @@ class SlidingPanel extends Component {
                   height: this.state.titleHeight,
                   width: this.state.titleHeight,
                 }}
-                tintColor="darkgrey"
+                tintColor={COLOR_ACCENT}
                 source={this.iconImage}
               />
             </View>
           </Touchable>
-          <ScrollView style={{
-              backgroundColor: 'white',
+          <ScrollView style={[{
               height: this.state.expandHeight,
-            }}
+            }, containerStyles.default]}
           >
-            <View style={{ padding: 10 }}>
+            <View style={containerStyles.ps}>
               {this.props.children}
             </View>
           </ScrollView>
