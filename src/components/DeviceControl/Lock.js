@@ -9,7 +9,7 @@ import { Text } from '../common';
 import LockImage from './LockImage';
 
 import containerStyles from '../../styles/containers';
-import { COLOR_ACCENT, COLOR_ICON, COLOR_TEXT_PRIMARY, COLOR_PRIMARY, COLOR_SECONDARY } from '../../styles/common';
+import { COLOR_ACCENT, COLOR_SECONDARY } from '../../styles/common';
 
 const getLandscape = () => {
   const dim = Dimensions.get('window');

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Button } from 'react-native';
 import PropTypes from 'prop-types';
+import { Button } from './common';
 
 class LinkButton extends Component {
   static contextTypes = {
