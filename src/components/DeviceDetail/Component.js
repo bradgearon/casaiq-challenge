@@ -6,6 +6,8 @@ import moment from 'moment';
 import DeviceControl from '../DeviceControl';
 import SlidingPanel from '../SlidingPanel';
 
+const dateFormat = 'YYYY-MM-DD h:mm:ss A';
+
 const DeviceDetail = ({ device, updateDevice, addHistory }) => (
   <View style={{ flex: 1, zIndex: 0 }}>
     <View style={{ flex: 1, zIndex: 0 }}>
@@ -24,7 +26,9 @@ const DeviceDetail = ({ device, updateDevice, addHistory }) => (
       {device.history
         .map(history => (
           <View key={history.id}>
-            <Text style={{ fontSize: 16 }}>{moment(history.timestamp).format('YYYY-MM-DD h:mm:ss A')}: {history.state}</Text>
+            <Text style={{ fontSize: 16 }}>
+              {moment(history.timestamp).format(dateFormat)}: {history.state}
+            </Text>
           </View>
       ))}
     </SlidingPanel>

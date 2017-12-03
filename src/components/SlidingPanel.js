@@ -7,6 +7,9 @@ import {
   ScrollView,
 } from 'react-native';
 
+import Touchable from 'react-native-platform-touchable';
+
+
 class SlidingPanel extends Component {
   constructor(props) {
     super(props);
@@ -18,11 +21,12 @@ class SlidingPanel extends Component {
     this.setTitleHeight = this.setTitleHeight.bind(this);
 
     this.state = {
-      expandHeight: this.props.expandHeight,
+      expandHeight: 0,
       containerTop: new Animated.Value(0),
       iconRotation: new Animated.Value(0),
       title: this.props.title,
       expanded: false,
+      titleHeight: 0,
     };
   }
 
@@ -44,6 +48,7 @@ class SlidingPanel extends Component {
   setMainHeight(event) {
     const { height } = event.nativeEvent.layout;
     this.setState(() => ({
+      expandHeight: this.props.expandHeight,
       height,
     }));
   }
@@ -67,19 +72,19 @@ class SlidingPanel extends Component {
           height: this.state.height,
         }}
       >
-        <View >
-          <TouchableHighlight
+        <View>
+          <Touchable
             onPress={this.onExpand}
             onLayout={this.setMainHeight}
+            background={Touchable.SelectableBackground()}
             style={{
               elevation: 1.5,
+              backgroundColor: 'white',
             }}
           >
             <View style={{
-
                 flexDirection: 'row',
                 padding: 10,
-                backgroundColor: 'white',
               }}
             >
               <Text
@@ -97,12 +102,16 @@ class SlidingPanel extends Component {
                   height: this.state.titleHeight,
                   width: this.state.titleHeight,
                 }}
-                tintColor="lightgrey"
+                tintColor="darkgrey"
                 source={this.iconImage}
               />
             </View>
-          </TouchableHighlight>
-          <ScrollView style={{ backgroundColor: 'white', height: this.state.expandHeight }}>
+          </Touchable>
+          <ScrollView style={{
+              backgroundColor: 'white',
+              height: this.state.expandHeight,
+            }}
+          >
             <View style={{ padding: 10 }}>
               {this.props.children}
             </View>

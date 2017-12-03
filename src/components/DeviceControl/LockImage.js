@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import {
-  TouchableWithoutFeedback,
   View,
   Animated,
   Image,
 } from 'react-native';
 
+import Touchable from 'react-native-platform-touchable';
+
 const lockImage = {
-  top: require('../../assets/lock-top.png'),
-  bottom: require('../../assets/lock-bottom.png'),
+  top: require('../../assets/top.png'),
+  bottom: require('../../assets/bottom.png'),
 };
 
 class LockImage extends Component {
@@ -22,8 +23,8 @@ class LockImage extends Component {
   render() {
     let topHeight = 0;
 
-    const topMinPercent = 0.06;
-    const topMaxPercent = 0.23;
+    const topMinPercent = 0.055;
+    const topMaxPercent = 0.50;
 
     let topMin = 0;
     let topMax = 0;
@@ -39,9 +40,13 @@ class LockImage extends Component {
     };
 
     return (
-      <TouchableWithoutFeedback onPress={toggleLock}>
-        <View style={style}>
+      <Touchable
+        onPress={toggleLock}
+        style={style}
+      >
+        <View>
           <Animated.Image
+            tintColor="#2196F3"
             onLayout={(event) => {
               topHeight = event.nativeEvent.layout.height;
               topMin = topHeight * topMinPercent;
@@ -53,22 +58,21 @@ class LockImage extends Component {
             }}
             resizeMode="contain"
             style={{
-              flex: 1,
               top: lockTopY,
+              flex: 0.5,
             }}
             source={lockImage.top}
           />
           <Image
+            tintColor="#2196F3"
             resizeMode="contain"
             style={{
-              bottom: '12%',
-              marginBottom: '-4%',
-              flex: 1,
+              flex: 0.5,
             }}
             source={lockImage.bottom}
           />
         </View>
-      </TouchableWithoutFeedback>
+      </Touchable>
     );
   }
 }
