@@ -10,6 +10,20 @@ import { Text } from '../common';
 
 const dateFormat = 'YYYY-MM-DD h:mm:ss A';
 
+const HistoryList = ({ device }) => {
+  if (device === null || device.history === null) {
+    return null;
+  }
+  return device.history.map(history => (
+    <View key={history.id}>
+      <Text>
+        {moment(history.timestamp)
+          .format(dateFormat)}: {history.state}
+      </Text>
+    </View>
+  ));
+};
+
 const DeviceDetail = ({ device, updateDevice, addHistory }) => (
   <View style={{ flex: 1, zIndex: 0 }}>
     <View style={{ flex: 1, zIndex: 0 }}>
@@ -25,21 +39,14 @@ const DeviceDetail = ({ device, updateDevice, addHistory }) => (
       expandHeight={200}
       style={{ zIndex: 2 }}
     >
-      {device.history
-        .map(history => (
-          <View key={history.id}>
-            <Text>
-              {moment(history.timestamp).format(dateFormat)}: {history.state}
-            </Text>
-          </View>
-      ))}
+      <HistoryList device={device} />
     </SlidingPanel>
   </View>
 );
 
 DeviceDetail.propTypes = {
+  device_name: PropTypes.string.isRequired,
   device: PropTypes.shape({
-    id: PropTypes.number.isRequired,
     device_name: PropTypes.string.isRequired,
     state: PropTypes.string.isRequired,
   }).isRequired,
