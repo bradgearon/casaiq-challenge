@@ -24,6 +24,7 @@ class Lock extends Component {
       landscape: getLandscape(),
     };
 
+    this.onDimensionsChanged = this.onDimensionsChanged.bind(this);
     Dimensions.addEventListener('change', this.onDimensionsChanged);
   }
 
