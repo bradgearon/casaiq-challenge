@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import {
   View,
   Animated,
@@ -12,53 +12,66 @@ const lockImage = {
   bottom: require('../../assets/bottom.png'),
 };
 
-class LockImage extends Component {
+class LockImage extends PureComponent {
   constructor(props) {
     super(props);
     this.init = true;
-  }
-  shouldComponentUpdate() {
-    return false;
-  }
-  render() {
-    let topHeight = 0;
 
-    const topMinPercent = 0.055;
-    const topMaxPercent = 0.50;
+    this.topMinPercent = 0.055;
+    this.topMaxPercent = 0.50;
 
-    let topMin = 0;
-    let topMax = 0;
+    this.topMin = 0;
+    this.topMax = 0;
 
-    let { value, style } = this.props;
-    const lockTopY = new Animated.Value(value ? topMax : topMin);
-
-    const toggleLock = () => {
-      const toValue = value ? topMin : topMax;
-      Animated.spring(lockTopY, { toValue }).start();
-      value = !value;
-      this.props.onValueChanged(value);
+    this.state = {
+      value: this.props.value,
+      lockTopY: new Animated.Value(0),
     };
+
+    this.toggleLock = this.toggleLock.bind(this);
+    this.onTopLayout = this.onTopLayout.bind(this);
+  }
+
+  onTopLayout(event) {
+    if (!this.init) {
+      return;
+    }
+
+    this.topHeight = event.nativeEvent.layout.height;
+
+    this.topMin = this.topHeight * this.topMinPercent;
+    this.topMax = this.topHeight * this.topMaxPercent;
+
+    this.state.lockTopY.setValue(this.state.value ? this.topMax : this.topMin);
+    this.init = false;
+  }
+
+  toggleLock() {
+    const toValue = this.state.value ? this.topMin : this.topMax;
+    Animated.spring(this.state.lockTopY, { toValue }).start();
+    const newValue = !this.state.value;
+    this.setState({
+      value: newValue,
+    });
+
+    this.props.onValueChanged(newValue);
+  }
+
+  render() {
+    const { style } = this.props;
 
     return (
       <Touchable
-        onPress={toggleLock}
+        onPress={this.toggleLock}
         style={style}
       >
         <View>
           <Animated.Image
             tintColor={this.props.tintColor}
-            onLayout={(event) => {
-              topHeight = event.nativeEvent.layout.height;
-              topMin = topHeight * topMinPercent;
-              topMax = topHeight * topMaxPercent;
-              if (this.init) {
-                lockTopY.setValue(value ? topMax : topMin);
-                this.init = false;
-              }
-            }}
+            onLayout={this.onTopLayout}
             resizeMode="contain"
             style={{
-              top: lockTopY,
+              top: this.state.lockTopY,
               flex: 0.5,
             }}
             source={lockImage.top}

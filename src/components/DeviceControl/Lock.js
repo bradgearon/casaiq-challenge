@@ -19,16 +19,20 @@ const getLandscape = () => {
 class Lock extends Component {
   constructor() {
     super();
+
     this.state = {
       landscape: getLandscape(),
     };
 
-    Dimensions.addEventListener('change', () => {
-      this.setState({
-        landscape: getLandscape(),
-      });
+    Dimensions.addEventListener('change', this.onDimensionsChanged);
+  }
+
+  onDimensionsChanged() {
+    this.setState({
+      landscape: getLandscape(),
     });
   }
+
   render() {
     return (
       <View style={[{
