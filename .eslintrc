@@ -6,8 +6,11 @@
     // "jsx-ally",
     "import"
   ],
+  "env": {
+    "jest": true
+  },
   "rules": {
-    "global-require":"off",
+    "global-require": "off",
     "no-plusplus": "off",
     "linebreak-style": 0,
     "react/jsx-filename-extension": [1, {
