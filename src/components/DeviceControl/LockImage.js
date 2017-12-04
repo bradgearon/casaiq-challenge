@@ -74,7 +74,7 @@ class LockImage extends PureComponent {
               top: this.state.lockTopY,
               flex: 0.5,
             }}
-            source={{ uri: lockImage.top }}
+            source={lockImage.top}
           />
           <Image
             tintColor={this.props.tintColor}
@@ -82,7 +82,7 @@ class LockImage extends PureComponent {
             style={{
               flex: 0.5,
             }}
-            source={{ uri: lockImage.bottom }}
+            source={lockImage.bottom}
           />
         </View>
       </Touchable>
