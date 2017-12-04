@@ -22,7 +22,6 @@ const DeviceList = ({ devices, style }) => (
 
 DeviceList.propTypes = {
   devices: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
     device_name: PropTypes.string.isRequired,
     state: PropTypes.string.isRequired,
   }).isRequired).isRequired,
