@@ -98,7 +98,7 @@ class SlidingPanel extends Component {
                   width: this.state.titleHeight,
                 }}
                 tintColor={COLOR_ACCENT}
-                source={this.iconImage}
+                source={{ uri: this.iconImage }}
               />
             </View>
           </Touchable>
