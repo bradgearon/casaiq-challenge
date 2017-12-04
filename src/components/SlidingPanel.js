@@ -24,10 +24,10 @@ class SlidingPanel extends Component {
 
     this.state = {
       expandHeight: 0,
-      containerTop: new Animated.Value(0),
+      containerTop: new Animated.Value(this.props.expanded ? -this.props.expandHeight : 0),
       iconRotation: new Animated.Value(0),
       title: this.props.title,
-      expanded: false,
+      expanded: this.props.expanded,
       titleHeight: 0,
     };
   }
@@ -98,7 +98,7 @@ class SlidingPanel extends Component {
                   width: this.state.titleHeight,
                 }}
                 tintColor={COLOR_ACCENT}
-                source={{ uri: this.iconImage }}
+                source={this.iconImage}
               />
             </View>
           </Touchable>
