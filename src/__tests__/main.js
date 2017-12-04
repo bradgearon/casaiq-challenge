@@ -3,10 +3,10 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import configureStore from 'redux-mock-store';
 
-import App from '../src/main';
+import App from '../main';
 
 const middlewares = [];
-const mockStore = configureStore(middlewares); 
+const mockStore = configureStore(middlewares);
 
 it('renders correctly', () => {
   const devices = [{
@@ -27,4 +27,4 @@ it('renders correctly', () => {
 
   const tree = renderer.create(<App store={store} />);
   console.log(tree.toJSON());
-}); 
+});

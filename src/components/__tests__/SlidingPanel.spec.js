@@ -19,7 +19,7 @@ describe('<SlidingPanel /> ', () => {
 });
 
 describe('<SlidingPanel /> ', () => {
-  it('collapses on click', () => {
+  it('collapses on click when expanded', () => {
     const expectedHeight = 200;
     const component = shallow(<SlidingPanel expanded expandHeight={expectedHeight} />);
 

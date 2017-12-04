@@ -17,4 +17,21 @@ describe('device actions', () => {
     expect(actions.updateDevice(testDevice, isLocked))
       .toEqual(expectedAction);
   });
+  it('should set action values for new history', () => {
+    const testDevice = {
+      device_name: 'test device',
+      history: [],
+    };
+
+    const historyAction = actions.addHistory(testDevice);
+
+    expect(historyAction.timestamp)
+      .toBeGreaterThan(0);
+
+    expect(historyAction.id)
+      .toBeGreaterThan(0);
+
+    expect(historyAction.device_name)
+      .toBe(testDevice.device_name);
+  });
 });
