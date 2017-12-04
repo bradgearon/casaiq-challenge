@@ -1,4 +1,4 @@
-import { DeviceTypes } from '../actions/device';
+import DeviceTypes from '../actions/types';
 
 const addHistoryElement = (device, action) => {
   device.history.unshift({

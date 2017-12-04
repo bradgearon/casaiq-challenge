@@ -1,7 +1,4 @@
-export const DeviceTypes = {
-  UPDATE_DEVICE: 'UPDATE_DEVICE',
-  ADD_DEVICE_HISTORY: 'ADD_DEVICE_HISTORY',
-};
+import DeviceTypes from './types';
 
 export const updateDevice = (device, isLocked) => ({
   type: DeviceTypes.UPDATE_DEVICE,
