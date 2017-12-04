@@ -14,7 +14,7 @@ class Device extends Component {
     const { goBack, state } = this.props.navigation;
     return (
       <View style={sceneStyle.content}>
-        <DeviceDetail device={state.params.device_name} />
+        <DeviceDetail device_name={state.params.device_name} />
       </View>
     );
   }
