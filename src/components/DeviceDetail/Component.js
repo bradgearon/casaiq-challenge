@@ -1,28 +1,10 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 
 import DeviceControl from '../DeviceControl';
 import SlidingPanel from '../SlidingPanel';
-
-import { Text } from '../common';
-
-const dateFormat = 'YYYY-MM-DD h:mm:ss A';
-
-const HistoryList = ({ device }) => {
-  if (device === null || device.history === null) {
-    return null;
-  }
-  return device.history.map(history => (
-    <View key={history.id}>
-      <Text>
-        {moment(history.timestamp)
-          .format(dateFormat)}: {history.state}
-      </Text>
-    </View>
-  ));
-};
+import HistoryList from './HistoryList';
 
 const DeviceDetail = ({ device, updateDevice, addHistory }) => (
   <View style={{ flex: 1, zIndex: 0 }}>
@@ -45,9 +27,7 @@ const DeviceDetail = ({ device, updateDevice, addHistory }) => (
 );
 
 DeviceDetail.propTypes = {
-  device: PropTypes.shape({
-    state: PropTypes.string.isRequired,
-  }).isRequired,
+  device_name: PropTypes.string.isRequired,
   updateDevice: PropTypes.func.isRequired,
   addHistory: PropTypes.func.isRequired,
 };

@@ -18,7 +18,6 @@ class SlidingPanel extends Component {
     expanded: PropTypes.bool,
     title: PropTypes.string,
     expandHeight: PropTypes.number,
-    children: PropTypes.arrayOf(Component),
   };
 
   constructor(props) {

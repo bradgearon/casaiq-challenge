@@ -5,7 +5,6 @@ import { shallow } from 'enzyme';
 
 import DeviceControl from '..';
 
-
 describe('<DeviceControl /> ', () => {
   it('renders Lock when type is set to lock', () => {
     const testDevice = { type: 'lock', state: 'locked' };
