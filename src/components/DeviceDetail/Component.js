@@ -45,11 +45,11 @@ const DeviceDetail = ({ device, updateDevice, addHistory }) => (
 );
 
 DeviceDetail.propTypes = {
-  device_name: PropTypes.string.isRequired,
   device: PropTypes.shape({
-    device_name: PropTypes.string.isRequired,
     state: PropTypes.string.isRequired,
   }).isRequired,
+  updateDevice: PropTypes.func.isRequired,
+  addHistory: PropTypes.func.isRequired,
 };
 
 export default DeviceDetail;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import UnknownDevice from './UnknownDevice';
 import Lock from './Lock';
@@ -9,6 +10,12 @@ const DeviceTypes = {
 };
 
 class DeviceControl extends Component {
+  static propTypes = {
+    device: PropTypes.shape({
+      type: PropTypes.string.isRequired,
+    }).isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.component = UnknownDevice;

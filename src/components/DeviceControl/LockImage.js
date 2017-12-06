@@ -5,6 +5,7 @@ import {
   Image,
 } from 'react-native';
 
+import PropTypes from 'prop-types';
 import Touchable from 'react-native-platform-touchable';
 
 const lockImage = {
@@ -13,6 +14,10 @@ const lockImage = {
 };
 
 class LockImage extends PureComponent {
+  static propTypes = {
+    value: PropTypes.bool.isRequired,
+    onValueChanged: PropTypes.func,
+  };
   constructor(props) {
     super(props);
     this.init = true;

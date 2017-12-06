@@ -8,6 +8,10 @@ class LinkButton extends Component {
     navigation: PropTypes.object,
   };
 
+  static propTypes = {
+    to: PropTypes.string.isRequired,
+  };
+
   handlePress = (event) => {
     if (this.props.onPress) {
       this.props.onPress(event);

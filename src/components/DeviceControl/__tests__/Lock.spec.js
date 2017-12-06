@@ -8,7 +8,11 @@ import Lock from '../Lock';
 describe('<Lock /> ', () => {
   it('renders LockImage with value = true for locked device', () => {
     const testDevice = { type: 'lock', state: 'locked' };
-    const component = shallow(<Lock device={testDevice} />);
+    const component = shallow(<Lock
+      updateDevice={() => {}}
+      addHistory={() => {}}
+      device={testDevice}
+    />);
     const lockImage = component.find('LockImage');
     expect(lockImage.prop('value'))
       .toBe(true);
@@ -16,7 +20,11 @@ describe('<Lock /> ', () => {
 
   it('renders lock state text', () => {
     const testDevice = { type: 'lock', state: 'locked' };
-    const component = shallow(<Lock device={testDevice} />);
+    const component = shallow(<Lock
+      updateDevice={() => {}}
+      addHistory={() => {}}
+      device={testDevice}
+    />);
     const lockState = component.find('Text');
     expect(lockState.children().text())
       .toBe(testDevice.state);

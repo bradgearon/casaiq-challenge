@@ -4,6 +4,7 @@ import {
   Animated,
   ScrollView,
 } from 'react-native';
+import PropTypes from 'prop-types';
 
 import Touchable from 'react-native-platform-touchable';
 import { Text } from './common';
@@ -13,6 +14,13 @@ import containerStyles from '../styles/containers';
 import { COLOR_ACCENT } from '../styles/common';
 
 class SlidingPanel extends Component {
+  static propTypes = {
+    expanded: PropTypes.bool,
+    title: PropTypes.string,
+    expandHeight: PropTypes.number,
+    children: PropTypes.arrayOf(Component),
+  };
+
   constructor(props) {
     super(props);
 

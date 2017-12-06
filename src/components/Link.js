@@ -12,6 +12,11 @@ class Link extends Component {
     navigation: PropTypes.object,
   };
 
+  static propTypes = {
+    to: PropTypes.string.isRequired,
+    component: PropTypes.element.isRequired,
+  }
+
   handlePress = (event) => {
     if (this.props.onPress) {
       this.props.onPress(event);

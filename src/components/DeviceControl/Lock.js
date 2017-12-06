@@ -3,6 +3,7 @@ import {
   View,
   Dimensions,
 } from 'react-native';
+import PropTypes from 'prop-types';
 
 import { Text } from '../common';
 
@@ -17,6 +18,14 @@ const getLandscape = () => {
 };
 
 class Lock extends Component {
+  static propTypes = {
+    device: PropTypes.shape({
+      state: PropTypes.string.isRequired,
+    }).isRequired,
+    updateDevice: PropTypes.func.isRequired,
+    addHistory: PropTypes.func.isRequired,
+  };
+
   constructor() {
     super();
 
